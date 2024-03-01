@@ -1,0 +1,6 @@
+CHANGELOG:
+   VERSÃO 0.0.1 - alfa
+
+   Descrição:
+     versão inicial experimental do sysconf.
+
