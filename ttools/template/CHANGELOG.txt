@@ -1,0 +1,17 @@
+CHANGELOG:
+  VERSÃO 0.0.1 - beta
+  
+    Descrição:
+      criada a versão inicial do programa, com o primeiro modelo de script
+
+    alterações:
+      - modelo de script 1.1
+
+  VERSÃO 0.0.2 - beta
+     
+    Descrição:
+      código melhorado e diretório padrão dos templates adicionados.
+
+    Alterações:
+      - código refatorado.
+

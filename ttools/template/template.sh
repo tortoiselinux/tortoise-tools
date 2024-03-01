@@ -17,38 +17,56 @@
 #   VERSÃO 0.0.1 - beta
 #
 #   Descrição:
-#   criada a versão inicial do programa, com o primeiro modelo de script
+#     criada a versão inicial do programa, com o primeiro modelo de script
 #
 #   alterações:
-#   - modelo de script 1.1
+#     - modelo de script 1.1
 #
+#   VERSÃO 0.0.2 - beta
+#     
+#   Descrição:
+#     código melhorado e diretório padrão dos templates adicionados.
+#
+#   Alterações:
+#     - código refatorado.
 
 # VARIÁVEIS
-conteudo="
-#!/usr/bin/env bash
-#========================{CABEÇALHO}=======================|
-#
-#AUTOR:
-#   john doe 'john_doe' <john.doe@gmail.com>
-#
-#NOME:
-#
-#
-#DESCRIÇÃO:
-#   esse programa faz...
-#
-#LICENÇA:
-#   LPMNO
-#
-#   AVISO! - essa licença não cobre a posse de tartarugas.
-#
-#CHANGELOG:
-#   VERSÃO 0.0.1 - beta
-#
-#   Descrição:
-#
-#   alterações:
-#
+template="$HOME/.config/tortoise/template/tortoise-standard-shell-template.txt"
+
+help="
+$(basename $0) {OPÇÃO}
+comandos:
+   $(basename $0) -{comando}
+    h | help
+    c | create
+
+    OBS: (-) ou (--) antes dos comandos é opcional
 "
+
+# FUNÇÕES
+
+HELP(){
+ echo "$help"
+}
+
+CREATE(){
+  echo "$1" > "$2"
+}
+
 # INICIO DO PROGRAMA
-echo "$conteudo"> "$1" #nome do script
+case "$1" in
+  "" | h | -h | help | --help)
+    HELP 
+  ;;
+
+  c | -c | create | --create)
+    CREATE "$template" "$2" 
+  ;;
+
+  *)
+    CREATE "$template" "$1"
+  ;;
+esac
+
+# TODO: criar função de input e output
+
