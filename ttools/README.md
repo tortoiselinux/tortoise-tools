@@ -1,11 +1,11 @@
-# tortoise Toolchain
+# tortoise Tools / ttools
 
 Para utilizar a gama de Scripts nesse repositório existem algumas considerações a serem feitas.
 
 * você precisa utilizar o instalador tegg
-* você precisa de um diretório chamado Scripts, e dentro dele três diretórios (src, symlinks, changelog)
+* você precisa de um diretório chamado scripts, e dentro dele três diretórios (src, symlinks, changelog)
 
-por enquanto o tegg não gera essa estrutura automaticamente, mas temos esse objetivo.
+o tortoise já consegue gerar os diretórios necessários!
 
 o diretório src/ é onde ficarão as pastas com os seus programas e os seus devidos arquivos.
 
@@ -13,8 +13,11 @@ o diretório symlinks/ irá guardar os links simbólicos, eles serão carregados
 
 o diretório changelog serve apenas para guardar os arquivos de changelog em um único lugar, porém isso é opcional e serve apenas para o acesso e leitura mais fácil desses arquivos.
 
-quando criar esses diretórios, você precisa gerar os links simbólicos e carregar a pasta symlinks no Path.
+o tortoise agora também é capaz de carregar os seus programas no Path!
 
-export "PATH=$PATH:$HOME/scripts/symlinks"
+você poderá encontrar algo parecido com isso no seu .bashrc ou .zshrc
+    export "PATH=$PATH:$HOME/scripts/symlinks"
 
 após isso basta chamar o script que deseja pelo nome em qualquer lugar e ele estará pronto.
+
+
