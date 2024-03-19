@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #========================{CABEÇALHO}=======================|
 #
 #AUTOR:
@@ -31,14 +30,19 @@
 #     - código refatorado.
 
 # VARIÁVEIS
-template="$HOME/.config/tortoise/template/tortoise-standard-shell-template.txt"
+templates="$HOME/.config/tortoise/template/"
 
+if [ -d "$HOME/.config/tortoise/template/" ];
+then
+	template="$HOME/.config/tortoise/template/tortoise-standard-shell-template.txt"
+fi
 help="
 $(basename $0) {OPÇÃO}
 comandos:
    $(basename $0) -{comando}
     h | help
     c | create
+    l | list
 
     OBS: (-) ou (--) antes dos comandos é opcional
 "
@@ -50,7 +54,31 @@ HELP(){
 }
 
 CREATE(){
-  echo "$1" > "$2"
+  if [ -z "$2"  ]; then
+    printf '%s\n' "está faltando argumento."
+	exit 1
+  fi
+  
+  cat "$1" > "$2"
+}
+
+CREATE_EMPITY(){
+   if [ -z "$2"  ]; then
+     printf '%s\n' "está faltando argumento."
+	 exit 1
+   fi
+
+   echo "$1" > "$2"
+}
+
+LIST(){
+	ls "$templates" > /tmp/list.txt
+	cat -n /tmp/list.txt
+	rm /tmp/list.txt
+}
+
+ADD(){
+	printf '%s\n' "$1" > "$templates"
 }
 
 # INICIO DO PROGRAMA
@@ -60,11 +88,23 @@ case "$1" in
   ;;
 
   c | -c | create | --create)
+    if [ -z "$template" ]; then
+      printf '%s\n' "não foi passado um template para a criação, use a opção list para ver quais templates você tem."
+	fi
+	
     CREATE "$template" "$2" 
   ;;
 
+  l | -l | list | --list)   
+	LIST
+  ;;
+
+  a | -a | add | --add)
+	ADD "$2"
+  ;; 
+  
   *)
-    CREATE "$template" "$1"
+    CREATE_EMPITY "" "$1"
   ;;
 esac
 
